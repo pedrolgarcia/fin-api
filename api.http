@@ -12,3 +12,15 @@ Content-Type: application/json
   "amount": 30,
   "type": "debit"
 }
+
+###
+GET http://localhost:3000/accounts
+
+###
+POST http://localhost:3000/accounts
+Content-Type: application/json
+
+{
+  "name": "Account 1",
+  "subdomain": "tenant1"
+}

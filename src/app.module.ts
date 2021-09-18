@@ -5,6 +5,9 @@ import { TransactionsModule } from './transactions/transactions.module';
 import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Transaction } from './transactions/entities/transaction.entity';
+import { AccountsModule } from './accounts/accounts.module';
+import { Account } from './accounts/entities/account.entity';
+import { CommonModule } from './common/common.module';
 
 // decorators
 @Module({
@@ -17,7 +20,7 @@ import { Transaction } from './transactions/entities/transaction.entity';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      models: [Transaction],
+      models: [Transaction, Account],
       autoLoadModels: true,
       synchronize: true,
       sync: {
@@ -25,6 +28,8 @@ import { Transaction } from './transactions/entities/transaction.entity';
       },
     }),
     TransactionsModule,
+    AccountsModule,
+    CommonModule,
   ],
   controllers: [AppController],
   providers: [AppService],
